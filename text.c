@@ -1,0 +1,11 @@
+banker.c
+diners.c
+disk.c
+fifo.c
+fit.c
+ipc1.c
+ipc2.c
+lru.c
+paging.c
+readers.c
+sync.c
