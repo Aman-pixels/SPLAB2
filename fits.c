@@ -7,7 +7,7 @@ void firstFit(int block[],int m,int process[],int n)
     for(i=0;i<m;i++)
         temp[i]=block[i];
 
-    printf("\nFirst Fit\n");
+    printf("\nFirst Fit Allocation\n");
 
     for(i=0;i<n;i++)
     {
@@ -20,6 +20,9 @@ void firstFit(int block[],int m,int process[],int n)
                 break;
             }
         }
+
+        if(j==m)
+            printf("Process %d not allocated\n",i+1);
     }
 }
 
@@ -30,7 +33,7 @@ void bestFit(int block[],int m,int process[],int n)
     for(i=0;i<m;i++)
         temp[i]=block[i];
 
-    printf("\nBest Fit\n");
+    printf("\nBest Fit Allocation\n");
 
     for(i=0;i<n;i++)
     {
@@ -50,6 +53,10 @@ void bestFit(int block[],int m,int process[],int n)
             printf("Process %d allocated to Block %d\n",i+1,best+1);
             temp[best]-=process[i];
         }
+        else
+        {
+            printf("Process %d not allocated\n",i+1);
+        }
     }
 }
 
@@ -60,7 +67,7 @@ void worstFit(int block[],int m,int process[],int n)
     for(i=0;i<m;i++)
         temp[i]=block[i];
 
-    printf("\nWorst Fit\n");
+    printf("\nWorst Fit Allocation\n");
 
     for(i=0;i<n;i++)
     {
@@ -80,6 +87,10 @@ void worstFit(int block[],int m,int process[],int n)
             printf("Process %d allocated to Block %d\n",i+1,worst+1);
             temp[worst]-=process[i];
         }
+        else
+        {
+            printf("Process %d not allocated\n",i+1);
+        }
     }
 }
 
@@ -87,23 +98,27 @@ int main()
 {
     int m,n,i;
 
-    printf("Enter number of blocks: ");
+    printf("Enter number of memory blocks: ");
     scanf("%d",&m);
 
     int block[m];
 
-    printf("Enter block sizes:\n");
     for(i=0;i<m;i++)
+    {
+        printf("Enter size of Block %d: ",i+1);
         scanf("%d",&block[i]);
+    }
 
     printf("Enter number of processes: ");
     scanf("%d",&n);
 
     int process[n];
 
-    printf("Enter process sizes:\n");
     for(i=0;i<n;i++)
+    {
+        printf("Enter size of Process %d: ",i+1);
         scanf("%d",&process[i]);
+    }
 
     firstFit(block,m,process,n);
     bestFit(block,m,process,n);
