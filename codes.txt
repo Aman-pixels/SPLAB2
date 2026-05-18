@@ -9,3 +9,4 @@ lru.c
 paging.c
 readers.c
 sync.c
+fits.c
